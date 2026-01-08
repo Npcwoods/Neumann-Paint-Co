@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neumann Paint Co - Professional Interior & Exterior Painting Services in Hayesville, NC">
+    <title>Neumann Paint Co - Professional Painting Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c5f7d;
+            --secondary-color: #4a9bc4;
+            --accent-color: #f4a261;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .tagline {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .contact-bar {
+            background: var(--accent-color);
+            padding: 25px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            text-align: center;
+            animation: fadeIn 0.8s ease-out backwards;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.1s; }
+        .contact-item:nth-child(2) { animation-delay: 0.2s; }
+        .contact-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-item a:hover {
+            transform: scale(1.05);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out backwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.5s; }
+        .section:nth-child(5) { animation-delay: 0.6s; }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .section p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+            border-left-color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            padding: 6px 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .step {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e8eef2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .step-number {
+            background: var(--secondary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .benefit {
+            background: var(--bg-light);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .customers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .customer-tag {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 15px;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            border: none;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #e89451;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .tagline {
+                font-size: 0.95em;
+            }
+
+            .contact-bar {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.75em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Neumann Paint Co</h1>
+            <p class="tagline">Interior & Exterior Painting • New Construction & Repaints • Pressure Washing</p>
+        </header>
+
+        <div class="contact-bar">
+            <div class="contact-item">
+                <strong>Owner</strong>
+                <span style="color: var(--white); font-weight: 600; font-size: 1.1em;">Cody Neumann</span>
+            </div>
+            <div class="contact-item">
+                <strong>Call or Text</strong>
+                <a href="tel:706-897-2449">706-897-2449</a>
+            </div>
+            <div class="contact-item">
+                <strong>Email</strong>
+                <a href="mailto:codynmn@gmail.com">codynmn@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="section">
+                <h2>About Us</h2>
+                <p>Neumann Paint Co is a locally owned painting business serving homeowners and small businesses in the Hayesville, NC area and surrounding communities. We focus on quality workmanship, clear communication, and reliable service. Whether it's refreshing a single room or completing a full repaint, our goal is simple: clean work done right.</p>
+                <p style="color: var(--text-dark); font-style: italic;">📍 146 Skid Strip Ln, Hayesville, NC 28904</p>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="section">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Residential Services</h3>
+                        <ul>
+                            <li>Interior painting (walls, ceilings, trim, doors)</li>
+                            <li>Exterior painting</li>
+                            <li>Repaints & refresh projects</li>
+                            <li>Drywall touch-ups and minor repairs</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>Additional Services</h3>
+                        <ul>
+                            <li>New construction painting</li>
+                            <li>Pressure washing (homes, driveways, decks, siding)</li>
+                            <li>Small commercial spaces (offices, local businesses)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="section">
+                <h2>How It Works</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Initial Contact</strong>
+                            <span>Call or text to discuss your project</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Free Quote</strong>
+                            <span>Clear scope and fair pricing</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Prep & Protection</strong>
+                            <span>Proper surface prep and clean work areas</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Professional Paint Job</strong>
+                            <span>Quality materials and attention to detail</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <strong>Final Walk-Through</strong>
+                            <span>Job isn't done until you're satisfied</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="section">
+                <h2>Why Choose Us</h2>
+                <div class="benefits">
+                    <div class="benefit">Local, Owner-Operated</div>
+                    <div class="benefit">Honest Communication</div>
+                    <div class="benefit">Clean, Respectful Work</div>
+                    <div class="benefit">Flexible Scheduling</div>
+                    <div class="benefit">Detail-Oriented Finishes</div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="section">
+                <h2>Who We Serve</h2>
+                <p>We proudly work with clients on a first-come, first-served basis:</p>
+                <div class="customers">
+                    <div class="customer-tag">Homeowners</div>
+                    <div class="customer-tag">Retired Homeowners</div>
+                    <div class="customer-tag">Small Business Owners</div>
+                    <div class="customer-tag">Realtors & Property Managers</div>
+                    <div class="customer-tag">Contractors</div>
+                </div>
+            </section>
+
+            <section class="cta">
+                <h2>Ready to Transform Your Space?</h2>
+                <p style="margin-bottom: 25px; font-size: 1.1em;">Call or text today to get your project on the schedule</p>
+                <a href="tel:706-897-2449" class="cta-button">📞 706-897-2449</a>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 Neumann Paint Co • Hayesville, NC • Professional Painting Services</p>
+        </footer>
+    </div>
+</body>
+</html>
