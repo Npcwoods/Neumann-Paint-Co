@@ -204,47 +204,40 @@
         .button-secondary { border: 1px solid var(--line); color: var(--ink); background: transparent; }
         .button-secondary:hover { background: var(--paper-deep); }
 
-        .hero-art { position: relative; min-height: 370px; isolation: isolate; }
-
-        .paint-swatch {
-            position: absolute;
-            width: 77%;
-            aspect-ratio: 1;
-            border-radius: 43% 57% 48% 52% / 54% 36% 64% 46%;
-        }
-
-        .paint-swatch.sage { top: 1%; right: 0; background: var(--sage); transform: rotate(-11deg); }
-        .paint-swatch.clay { right: 18%; bottom: 0; background: var(--clay); transform: rotate(28deg); }
-
-        .art-card {
-            position: absolute;
-            inset: 14% 4% 11% 11%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: clamp(24px, 4vw, 40px);
-            color: var(--white);
-            background: var(--ink);
+        .hero-photo {
+            position: relative;
+            min-height: 425px;
+            margin: 0;
+            overflow: hidden;
+            background: var(--sage);
             box-shadow: 18px 18px 0 rgba(238, 229, 213, .92);
         }
 
-        .art-card::before { position: absolute; top: 23px; left: 23px; width: 43px; height: 3px; content: ""; background: var(--clay); }
-
-        .art-card p {
-            max-width: 19ch;
-            margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(1.65rem, 3vw, 2.4rem);
-            line-height: 1.06;
-            letter-spacing: -.05em;
+        .hero-photo::after {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background: linear-gradient(180deg, transparent 45%, rgba(23, 53, 53, .58));
         }
 
-        .art-card span {
-            margin-top: 17px;
-            color: #bbcbc4;
-            font-size: .8rem;
-            font-weight: 700;
-            letter-spacing: .1em;
+        .hero-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 425px;
+            object-fit: cover;
+        }
+
+        .hero-photo figcaption {
+            position: absolute;
+            right: 27px;
+            bottom: 23px;
+            left: 27px;
+            z-index: 1;
+            color: var(--white);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .13em;
             text-transform: uppercase;
         }
 
@@ -345,6 +338,58 @@
             line-height: 1;
         }
 
+        .work-gallery {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr;
+            gap: 16px;
+        }
+
+        .gallery-card {
+            position: relative;
+            min-height: 365px;
+            margin: 0;
+            overflow: hidden;
+            background: var(--ink);
+        }
+
+        .gallery-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 365px;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+
+        .gallery-card:hover img { transform: scale(1.035); }
+
+        .gallery-card figcaption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 44px 27px 23px;
+            color: var(--white);
+            background: linear-gradient(180deg, transparent, rgba(23, 53, 53, .88));
+        }
+
+        .gallery-card figcaption span {
+            display: block;
+            margin-bottom: 5px;
+            color: #f7c5a9;
+            font-size: .69rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .gallery-card figcaption strong {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.42rem;
+            font-weight: 400;
+            letter-spacing: -.035em;
+        }
+
         .process { color: #edf2ed; background: var(--ink); }
         .process .section-heading h2 { color: var(--white); }
         .process .section-heading p { color: #bbcbc4; }
@@ -411,11 +456,13 @@
 
         @media (max-width: 860px) {
             .hero { grid-template-columns: 1fr; }
-            .hero-art { max-width: 470px; width: 100%; min-height: 310px; }
+            .hero-photo { max-width: 540px; width: 100%; min-height: 330px; }
+            .hero-photo img { min-height: 330px; }
             .section-heading { grid-template-columns: 1fr; gap: 14px; }
             .section-heading p { margin-top: 0; }
             .services-grid { grid-template-columns: 1fr; }
             .service-card { min-height: unset; }
+            .work-gallery { grid-template-columns: 1fr 1fr; }
             .steps { grid-template-columns: repeat(2, 1fr); gap: 26px 0; }
             .step:nth-child(3) { padding-left: 0; border-left: 0; }
             .reasons { grid-template-columns: repeat(3, 1fr); }
@@ -428,13 +475,15 @@
             .brand-row { padding-bottom: 16px; }
             .owner { display: none; }
             .hero { padding: 45px 24px; border-radius: 20px 20px 0 0; }
-            .hero-art { min-height: 270px; }
-            .art-card { inset: 12% 5% 10% 7%; }
+            .hero-photo { min-height: 278px; box-shadow: 11px 11px 0 rgba(238, 229, 213, .92); }
+            .hero-photo img { min-height: 278px; }
             .service-strip { padding: 0 24px; }
             .service-strip li { padding: 14px 14px 14px 0; margin-right: 14px; }
             .service-strip li + li { padding-left: 14px; }
             main { border-radius: 0 0 20px 20px; }
             .section { padding: 54px 24px; }
+            .work-gallery { grid-template-columns: 1fr; }
+            .gallery-card, .gallery-card img { min-height: 282px; }
             .steps { grid-template-columns: 1fr; gap: 0; }
             .step, .step + .step { padding: 0 0 24px; border-left: 0; }
             .step + .step { padding-top: 0; }
@@ -488,14 +537,10 @@
                         <a class="button button-secondary" href="mailto:codynmn@gmail.com">Send an email</a>
                     </div>
                 </div>
-                <div class="hero-art" aria-hidden="true">
-                    <div class="paint-swatch sage"></div>
-                    <div class="paint-swatch clay"></div>
-                    <div class="art-card">
-                        <p>Paint with a finer point of view.</p>
-                        <span>Hayesville, North Carolina</span>
-                    </div>
-                </div>
+                <figure class="hero-photo">
+                    <img src="assets/fine-line-exterior-home.webp" alt="Freshly painted white home with forest-green trim in the North Carolina mountains">
+                    <figcaption>Exterior painting with a finer point of view</figcaption>
+                </figure>
             </section>
 
             <ul class="service-strip" aria-label="Core services">
@@ -545,6 +590,23 @@
                             <li>Offices and local businesses</li>
                         </ul>
                     </article>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="work-title">
+                <div class="section-heading">
+                    <h2 id="work-title">Care you can see.</h2>
+                    <p>A beautifully maintained home starts with the surfaces outside. From clean exteriors to carefully refreshed paint, we help protect the details that welcome you home.</p>
+                </div>
+                <div class="work-gallery">
+                    <figure class="gallery-card">
+                        <img src="assets/fine-line-exterior-home.webp" alt="White mountain home with freshly painted forest-green shutters and trim" loading="lazy">
+                        <figcaption><span>Exterior painting</span><strong>A finish that feels at home.</strong></figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <img src="assets/fine-line-pressure-washing.webp" alt="Professional pressure washing a clean driveway in front of a well-kept home" loading="lazy">
+                        <figcaption><span>Exterior care</span><strong>Pressure washing, done with care.</strong></figcaption>
+                    </figure>
                 </div>
             </section>
 
